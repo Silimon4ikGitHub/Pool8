@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7732009195637854035}
   - component: {fileID: 7732009195637854036}
   - component: {fileID: 1289163530}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e7185d490799682499373a62c5162944, type: 2}
+  - {fileID: 2100000, guid: 8e926af1852ee3a4995129ddddef06fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
