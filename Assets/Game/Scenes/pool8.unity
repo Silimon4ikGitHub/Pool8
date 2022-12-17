@@ -1506,9 +1506,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mousePos: {x: 0, y: 0, z: 0}
+  cuePosition: {x: 0, y: 0, z: 0}
+  cueShiftingPosition: {x: 0, y: 0, z: 0}
+  offset: 0.01
   rb: {fileID: 0}
+  cue: {fileID: 1279900724}
   angle: 0
-  force: 500
+  force: 100
 --- !u!4 &824349872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7732009195637854037, guid: 3091e78815c8a26479e5a919421d1cbc,
@@ -2143,6 +2147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f12034a73ee5141bd377bf1ddafdaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1279900724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6018842429414365583, guid: 3856b48f5ca68284aa57089db39a8d20,
+    type: 3}
+  m_PrefabInstance: {fileID: 6018842429220196147}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1326667093 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7732009195637854038, guid: 3091e78815c8a26479e5a919421d1cbc,

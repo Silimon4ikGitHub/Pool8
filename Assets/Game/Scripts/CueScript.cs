@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 public class CueScript : MonoBehaviour
 {
    [SerializeField] private Vector3 mousePos;
+   [SerializeField] private Vector3 cuePosition;
+   [SerializeField] private Vector3 cueShiftingPosition;
+   [SerializeField] private float offset;
    [SerializeField] private Rigidbody rb;
+   [SerializeField] private GameObject cue;
    [SerializeField] private float  angle;
    [SerializeField] private float  force;
    private float fieldY = -105;
@@ -17,12 +21,14 @@ public class CueScript : MonoBehaviour
     }
    void Update()
    {
+    cuePosition = transform.position;
+    
+    
     RotateOnMouse();
-    if (Input.GetKeyDown("space"))
-    {
-        rb.AddForce(-mousePos * force);
-    }
+    
     WhiteBallFall();
+
+    AddForceOnMouseDown();
    }
    void RotateOnMouse()
    {
@@ -30,16 +36,28 @@ public class CueScript : MonoBehaviour
     angle = Mathf.Atan2(-mousePos.x, -mousePos.z) * Mathf.Rad2Deg;
     transform.rotation = Quaternion.Euler(0f, angle, 0f);
    }
-   void OnMouseDown()
-    {
-       rb.AddForce(Vector3.right * force);
-    }
     
     void WhiteBallFall()
     {
         if (transform.position.y < fieldY)
         {
             SceneManager.LoadScene(0);
+        }
+    }
+
+    void AddForceOnMouseDown()
+    {
+        if(Input.GetKey(KeyCode.Mouse0))
+        {
+            cue.SetActive(true);
+            
+            cue.transform.position = new Vector3 (cue.transform.position.x + mousePos.x * offset, cue.transform.position.y, cue.transform.position.z + mousePos.z * offset);
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            rb.AddForce(-mousePos * force);
+            cue.SetActive(false);
+            cue.transform.position = cuePosition;
         }
     }
 
