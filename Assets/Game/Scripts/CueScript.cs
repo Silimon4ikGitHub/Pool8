@@ -51,11 +51,14 @@ public class CueScript : MonoBehaviour
         {
             cue.SetActive(true);
             
-            cue.transform.position = new Vector3 (cue.transform.position.x + mousePos.x * offset, cue.transform.position.y, cue.transform.position.z + mousePos.z * offset);
+            cue.transform.position = new Vector3 
+            (cue.transform.position.x + mousePos.x * offset,
+            transform.position.y,
+            cue.transform.position.z + mousePos.z * offset);
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            rb.AddForce(-mousePos * force);
+            rb.AddForce(-mousePos * force, ForceMode.Impulse);
             cue.SetActive(false);
             cue.transform.position = cuePosition;
         }
