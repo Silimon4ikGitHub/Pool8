@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ColorBallsScript : MonoBehaviour
 {
+    [SerializeField] private WhiteBallScript whiteBallScript;
     public GameObject[] balls;
     public bool areAllBallsStop = true;
     public int stoppedBallsOnTable;
@@ -26,7 +27,7 @@ public class ColorBallsScript : MonoBehaviour
        {
          if(item != null)
          {
-           if (item.GetComponent<BallScript>().isMoving == true)
+           if (item.GetComponent<BallScript>().isMoving == true || whiteBallScript.isMoving == true)
            {
             areAllBallsStop = false;
             break;

@@ -8,6 +8,7 @@ public class WhiteBallScript : MonoBehaviour
     [SerializeField] private float mySpeed;
     [SerializeField] private float stopSpeed = 0.1f;
     [SerializeField] private Rigidbody rb;
+    public bool isMoving;
 
     void Awake()
     {
@@ -20,6 +21,10 @@ public class WhiteBallScript : MonoBehaviour
         if (mySpeed < stopSpeed)
         {
             StopMoution();
+        }
+        else
+        {
+            isMoving = true;
         }
     }
 
@@ -34,5 +39,6 @@ public class WhiteBallScript : MonoBehaviour
         rb.freezeRotation = false;
         rb.constraints = RigidbodyConstraints.FreezePosition;
         rb.constraints = RigidbodyConstraints.None;
+        isMoving = false;
     }
 }

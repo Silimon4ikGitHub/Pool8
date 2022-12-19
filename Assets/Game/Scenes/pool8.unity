@@ -1519,6 +1519,7 @@ MonoBehaviour:
   mySpeed: 0
   stopSpeed: 0.1
   rb: {fileID: 0}
+  isMoving: 0
 --- !u!4 &824349872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7732009195637854037, guid: 3091e78815c8a26479e5a919421d1cbc,
@@ -3716,6 +3717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2103e6a5051764e96e0db07cd4358d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whiteBallScript: {fileID: 804616182}
   balls:
   - {fileID: 0}
   - {fileID: 0}

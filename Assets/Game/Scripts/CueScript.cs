@@ -32,6 +32,11 @@ public class CueScript : MonoBehaviour
     {
      AddForceOnMouseDown();
      RotateOnMouse();
+     cue.SetActive(true);
+    }
+    else
+    {
+        cue.SetActive(false);
     }
     
    }
@@ -55,7 +60,7 @@ public class CueScript : MonoBehaviour
         
         if(Input.GetKey(KeyCode.Mouse0))
         {
-            cue.SetActive(true);
+            
             cue.transform.position = new Vector3 
             (cue.transform.position.x + mousePos.x * offset,
             transform.position.y,
