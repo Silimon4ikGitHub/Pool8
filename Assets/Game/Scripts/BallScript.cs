@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    [SerializeField] private Vector3 prevousPosition;
     [SerializeField] private float mySpeed;
     [SerializeField] private float stopSpeed = 0.1f;
     [SerializeField] private Rigidbody rb;
@@ -20,7 +19,6 @@ public class BallScript : MonoBehaviour
     {
         if (transform.position.y < fieldY)
         {
-            GetComponentInParent<ColorBallsScript>().balls[myArrayIndex] = null;
             Destroy(transform.gameObject);
         }
 

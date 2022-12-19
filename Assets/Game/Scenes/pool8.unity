@@ -1500,8 +1500,9 @@ MonoBehaviour:
   offset: 0.01
   rb: {fileID: 0}
   cue: {fileID: 1279900724}
+  colorBallScript: {fileID: 2046198289}
   angle: 0
-  force: 10
+  force: 5
 --- !u!114 &804616182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3732,7 +3733,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   areAllBallsStop: 0
-  ballsOnTable: 0
+  stoppedBallsOnTable: 0
 --- !u!1001 &2088268179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4192,7 +4193,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 611076ee4f7e9f8488297b7dc89fc2e0,
+      objectReference: {fileID: 13400000, guid: cc7e4ed3a95ce894bb13c599247cc0ae,
         type: 2}
     - target: {fileID: 6018842429414365583, guid: 3856b48f5ca68284aa57089db39a8d20,
         type: 3}

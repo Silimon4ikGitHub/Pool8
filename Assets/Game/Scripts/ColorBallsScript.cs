@@ -5,8 +5,8 @@ using UnityEngine;
 public class ColorBallsScript : MonoBehaviour
 {
     public GameObject[] balls;
-    public bool areAllBallsStop;
-    public int ballsOnTable;
+    public bool areAllBallsStop = true;
+    public int stoppedBallsOnTable;
     void Awake()
     {
         for (int i=0; i < balls.Length; i++)
@@ -17,25 +17,30 @@ public class ColorBallsScript : MonoBehaviour
 
     void Update()
     {
-        //CheckBallsMoution();
+        CheckBallsMoution2();
     }
 
-    void CheckBallsMoution()
+    void CheckBallsMoution2()
     {
-        
-        for (int i=0; i < balls.Length; i++)
-        {
-            if (balls[i] != null)
-            {
-             ballsOnTable++;
-            //balls[i] = transform.GetChild(i).gameObject;
-            //var _myArrayIndex = balls[i].GetComponent<BallScript>().myArrayIndex = i;
-             if(!balls[i].GetComponent<BallScript>().isMoving)
-             {
-                areAllBallsStop = true;
-             }
-            }
-            
-        }
+       foreach (var item in balls)
+       {
+         if(item != null)
+         {
+           if (item.GetComponent<BallScript>().isMoving == true)
+           {
+            areAllBallsStop = false;
+            break;
+           }
+           else
+           {
+            areAllBallsStop = true;
+           }
+         }
+       }
+
+       if(areAllBallsStop)
+       {
+        Debug.Log("here is working");
+       } 
     }
 }

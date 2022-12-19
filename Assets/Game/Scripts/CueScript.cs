@@ -11,6 +11,7 @@ public class CueScript : MonoBehaviour
    [SerializeField] private float offset;
    [SerializeField] private Rigidbody rb;
    [SerializeField] private GameObject cue;
+   [SerializeField] private ColorBallsScript colorBallScript;
    [SerializeField] private float  angle;
    [SerializeField] private float  force;
    private float fieldY = -105;
@@ -24,11 +25,15 @@ public class CueScript : MonoBehaviour
     cuePosition = transform.position;
     
     
-    RotateOnMouse();
+    
     
     WhiteBallFall();
-
-    AddForceOnMouseDown();
+    if (colorBallScript.areAllBallsStop)
+    {
+     AddForceOnMouseDown();
+     RotateOnMouse();
+    }
+    
    }
    void RotateOnMouse()
    {
@@ -47,10 +52,10 @@ public class CueScript : MonoBehaviour
 
     void AddForceOnMouseDown()
     {
+        
         if(Input.GetKey(KeyCode.Mouse0))
         {
             cue.SetActive(true);
-            
             cue.transform.position = new Vector3 
             (cue.transform.position.x + mousePos.x * offset,
             transform.position.y,
@@ -58,7 +63,8 @@ public class CueScript : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            rb.AddForce(-mousePos * force, ForceMode.Impulse);
+            var dirrectionOfForce = new Vector3 (-mousePos.x, 0, -mousePos.z);
+            rb.AddForce(dirrectionOfForce * force, ForceMode.Impulse);
             cue.SetActive(false);
             cue.transform.position = cuePosition;
         }
