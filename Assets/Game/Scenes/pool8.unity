@@ -1496,13 +1496,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mousePos: {x: 0, y: 0, z: 0}
   cuePosition: {x: 0, y: 0, z: 0}
-  cueShiftingPosition: {x: 0, y: 0, z: 0}
   offset: 0.01
   rb: {fileID: 0}
   cue: {fileID: 1279900724}
   colorBallScript: {fileID: 2046198289}
   angle: 0
-  force: 5
+  force: 4
 --- !u!114 &804616182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1515,7 +1514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4a1016aabdef14084d9e302c4682a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prevousPosition: {x: 0, y: 0, z: 0}
   mySpeed: 0
   stopSpeed: 0.1
   rb: {fileID: 0}
@@ -3735,7 +3733,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   areAllBallsStop: 0
-  stoppedBallsOnTable: 0
 --- !u!1001 &2088268179
 PrefabInstance:
   m_ObjectHideFlags: 0

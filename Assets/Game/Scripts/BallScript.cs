@@ -9,7 +9,6 @@ public class BallScript : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     private float fieldY = -105;
     public bool isMoving;
-    public int myArrayIndex;
     
     void Awake()
     {

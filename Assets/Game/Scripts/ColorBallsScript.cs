@@ -7,7 +7,7 @@ public class ColorBallsScript : MonoBehaviour
     [SerializeField] private WhiteBallScript whiteBallScript;
     public GameObject[] balls;
     public bool areAllBallsStop = true;
-    public int stoppedBallsOnTable;
+
     void Awake()
     {
         for (int i=0; i < balls.Length; i++)
@@ -18,10 +18,10 @@ public class ColorBallsScript : MonoBehaviour
 
     void Update()
     {
-        CheckBallsMoution2();
+        CheckBallsMoution();
     }
 
-    void CheckBallsMoution2()
+    void CheckBallsMoution()
     {
        foreach (var item in balls)
        {
@@ -38,10 +38,5 @@ public class ColorBallsScript : MonoBehaviour
            }
          }
        }
-
-       if(areAllBallsStop)
-       {
-        Debug.Log("here is working");
-       } 
     }
 }

@@ -7,7 +7,6 @@ public class CueScript : MonoBehaviour
 {
    [SerializeField] private Vector3 mousePos;
    [SerializeField] private Vector3 cuePosition;
-   [SerializeField] private Vector3 cueShiftingPosition;
    [SerializeField] private float offset;
    [SerializeField] private Rigidbody rb;
    [SerializeField] private GameObject cue;
@@ -23,21 +22,19 @@ public class CueScript : MonoBehaviour
    void Update()
    {
     cuePosition = transform.position;
-    
-    
-    
-    
+
     WhiteBallFall();
+
     if (colorBallScript.areAllBallsStop)
-    {
-     AddForceOnMouseDown();
-     RotateOnMouse();
-     cue.SetActive(true);
-    }
-    else
-    {
+       {
+        AddForceOnMouseDown();
+        RotateOnMouse();
+        cue.SetActive(true);
+       }
+       else
+       {
         cue.SetActive(false);
-    }
+       }
     
    }
    void RotateOnMouse()

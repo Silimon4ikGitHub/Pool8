@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WhiteBallScript : MonoBehaviour
 {
-   [SerializeField] private Vector3 prevousPosition;
     [SerializeField] private float mySpeed;
     [SerializeField] private float stopSpeed = 0.1f;
     [SerializeField] private Rigidbody rb;
@@ -15,17 +14,17 @@ public class WhiteBallScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
     void Update()
-    {
+    { 
      CheckMySpeed();
 
-        if (mySpeed < stopSpeed)
-        {
-            StopMoution();
-        }
-        else
-        {
-            isMoving = true;
-        }
+    if (mySpeed < stopSpeed)
+      {
+        StopMoution();
+      }
+       else
+      {
+         isMoving = true;
+      }
     }
 
     void CheckMySpeed()
