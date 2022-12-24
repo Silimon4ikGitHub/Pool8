@@ -8,6 +8,7 @@ public class CueScript : MonoBehaviour
    [SerializeField] private Vector3 mousePos;
    [SerializeField] private Vector3 cuePosition;
    [SerializeField] private float offset;
+   [SerializeField] private float cueOffsetLimit;
    [SerializeField] private Rigidbody rb;
    [SerializeField] private GameObject cue;
    [SerializeField] private ColorBallsScript colorBallScript;
@@ -57,7 +58,7 @@ public class CueScript : MonoBehaviour
         
         if(Input.GetKey(KeyCode.Mouse0))
         {
-            
+            cueOffsetLimit = cue.transform.position.x + mousePos.x * offset * cue.transform.position.z + mousePos.z * offset;
             cue.transform.position = new Vector3 
             (cue.transform.position.x + mousePos.x * offset,
             transform.position.y,
