@@ -1495,13 +1495,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mousePos: {x: 0, y: 0, z: 0}
+  mousePosition: {x: 0, y: 0, z: 0}
   cuePosition: {x: 0, y: 0, z: 0}
-  offset: 0.01
+  cueSpeed: 0.01
+  cueOffsetLimit: 1.5
   rb: {fileID: 0}
   cue: {fileID: 1279900724}
   colorBallScript: {fileID: 2046198289}
   angle: 0
-  force: 4
+  force: 10
+  offsetY: {x: 0, y: 0, z: -99}
 --- !u!114 &804616182
 MonoBehaviour:
   m_ObjectHideFlags: 0

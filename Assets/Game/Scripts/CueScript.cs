@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 public class CueScript : MonoBehaviour
 {
    [SerializeField] private Vector3 mousePos;
+   [SerializeField] private Vector3 mousePosition;
    [SerializeField] private Vector3 cuePosition;
-   [SerializeField] private float offset;
+   [SerializeField] private float cueSpeed;
    [SerializeField] private float cueOffsetLimit;
    [SerializeField] private Rigidbody rb;
    [SerializeField] private GameObject cue;
    [SerializeField] private ColorBallsScript colorBallScript;
    [SerializeField] private float  angle;
    [SerializeField] private float  force;
+   [SerializeField] private Vector3  offsetY;
    private float fieldY = -105;
    
    void Awake()
@@ -28,8 +30,11 @@ public class CueScript : MonoBehaviour
 
     if (colorBallScript.areAllBallsStop)
        {
-        AddForceOnMouseDown();
+        
         RotateOnMouse();
+        AddForceOnMouseDown();
+        
+        
         cue.SetActive(true);
        }
        else
@@ -58,11 +63,9 @@ public class CueScript : MonoBehaviour
         
         if(Input.GetKey(KeyCode.Mouse0))
         {
-            cueOffsetLimit = cue.transform.position.x + mousePos.x * offset * cue.transform.position.z + mousePos.z * offset;
-            cue.transform.position = new Vector3 
-            (cue.transform.position.x + mousePos.x * offset,
-            transform.position.y,
-            cue.transform.position.z + mousePos.z * offset);
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition - offsetY);
+            cue.transform.position = transform.position + Vector3.ClampMagnitude(mousePosition - transform.position, cueOffsetLimit);
+            Cursor.visible = false;
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
@@ -70,7 +73,9 @@ public class CueScript : MonoBehaviour
             rb.AddForce(dirrectionOfForce * force, ForceMode.Impulse);
             cue.SetActive(false);
             cue.transform.position = cuePosition;
+            Cursor.visible = true;
         }
     }
+  
 
 }
