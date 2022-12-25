@@ -8,11 +8,15 @@ public class CueScript : MonoBehaviour
    [SerializeField] private Vector3 mousePos;
    [SerializeField] private Vector3 mousePosition;
    [SerializeField] private Vector3 cuePosition;
+   [SerializeField] private Vector3 dirrectionOfForce;
+   [SerializeField] private Vector3 lineDirrection;
    [SerializeField] private float cueSpeed;
    [SerializeField] private float cueOffsetLimit;
    [SerializeField] private Rigidbody rb;
    [SerializeField] private GameObject cue;
+   [SerializeField] private GameObject lineRenderer;
    [SerializeField] private ColorBallsScript colorBallScript;
+   [SerializeField] private TrajectoryRenderer trajectoryScript;
    [SerializeField] private float  angle;
    [SerializeField] private float  force;
    [SerializeField] private Vector3  offsetY;
@@ -64,18 +68,24 @@ public class CueScript : MonoBehaviour
         if(Input.GetKey(KeyCode.Mouse0))
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition - offsetY);
-            cue.transform.position = transform.position + Vector3.ClampMagnitude(mousePosition - transform.position, cueOffsetLimit);
+            cue.transform.position = transform.position + Vector3.ClampMagnitude(mousePosition - transform.position * cueSpeed, cueOffsetLimit);
+            lineRenderer.GetComponent<LineRenderer>().enabled = true;
+            RenderBallLine();
             Cursor.visible = false;
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            var dirrectionOfForce = new Vector3 (-mousePos.x, 0, -mousePos.z);
+            dirrectionOfForce = new Vector3 (-mousePos.x, 0, -mousePos.z);
             rb.AddForce(dirrectionOfForce * force, ForceMode.Impulse);
             cue.SetActive(false);
             cue.transform.position = cuePosition;
+            lineRenderer.GetComponent<LineRenderer>().enabled = false;
             Cursor.visible = true;
         }
     }
-  
-
+    void RenderBallLine()
+    {
+        lineDirrection = new Vector3(-mousePos.x * 100, transform.position.y, -mousePos.z * 100);
+        trajectoryScript.ShowTraectory(transform.position, lineDirrection);
+    }
 }
