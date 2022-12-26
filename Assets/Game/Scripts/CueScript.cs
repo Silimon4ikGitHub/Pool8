@@ -5,26 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class CueScript : MonoBehaviour
 {
-   [SerializeField] private Vector3 mousePos;
-   [SerializeField] private Vector3 mousePosition;
-   [SerializeField] private Vector3 cuePosition;
-   [SerializeField] private Vector3 dirrectionOfForce;
-   [SerializeField] private Vector3 lineDirrection;
+
    [SerializeField] private float cueSpeed;
    [SerializeField] private float cueOffsetLimit;
-   [SerializeField] private Rigidbody rb;
+   [SerializeField] private float  force;
+   [SerializeField] private Vector3  offsetY;
    [SerializeField] private GameObject cue;
    [SerializeField] private GameObject lineRenderer;
    [SerializeField] private ColorBallsScript colorBallScript;
    [SerializeField] private TrajectoryRenderer trajectoryScript;
-   [SerializeField] private float  angle;
-   [SerializeField] private float  force;
-   [SerializeField] private Vector3  offsetY;
-   private float fieldY = -105;
+    private float  angle;
+    private float fieldY = -105;
+    private Vector3 mousePos;
+    private Vector3 mousePosition;
+    private Vector3 cuePosition;
+    private Vector3 dirrectionOfForce;
+    private Vector3 lineDirrection;
+    private Rigidbody myRB;
    
    void Awake()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        myRB = gameObject.GetComponent<Rigidbody>();
     }
    void Update()
    {
@@ -76,7 +77,7 @@ public class CueScript : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             dirrectionOfForce = new Vector3 (-mousePos.x, 0, -mousePos.z);
-            rb.AddForce(dirrectionOfForce * force, ForceMode.Impulse);
+            myRB.AddForce(dirrectionOfForce * force, ForceMode.Impulse);
             cue.SetActive(false);
             cue.transform.position = cuePosition;
             lineRenderer.GetComponent<LineRenderer>().enabled = false;

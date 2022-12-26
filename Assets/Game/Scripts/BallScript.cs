@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    [SerializeField] private float mySpeed;
     [SerializeField] private float stopSpeed = 0.1f;
-    [SerializeField] private Rigidbody rb;
+    private Rigidbody rb;
+    private float mySpeed;
     private float fieldY = -105;
     public bool isMoving;
+    public bool isStriped;
+    
     
     void Awake()
     {
