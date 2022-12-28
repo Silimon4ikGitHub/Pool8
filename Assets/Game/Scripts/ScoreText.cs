@@ -5,10 +5,15 @@ using UnityEngine.UI;
 
 public class ScoreText : MonoBehaviour
 {
+    [SerializeField] AudioSource ballInHoleSound;
     public Text score;
     public static int stripedScore;
     public static int colorScore;
     
+    private void Start() 
+    {
+        ballInHoleSound.gameObject.transform.GetComponent<AudioSource>();
+    }
     private void Update() 
     {
         score.text = stripedScore + "/" + colorScore;
@@ -23,5 +28,6 @@ public class ScoreText : MonoBehaviour
         {
             colorScore++;
         }
+        ballInHoleSound.Play();
      }
 }

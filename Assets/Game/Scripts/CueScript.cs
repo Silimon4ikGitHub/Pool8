@@ -14,6 +14,7 @@ public class CueScript : MonoBehaviour
    [SerializeField] private GameObject lineRenderer;
    [SerializeField] private ColorBallsScript colorBallScript;
    [SerializeField] private TrajectoryRenderer trajectoryScript;
+   [SerializeField] private AudioSource shootSound;
     private float  angle;
     private float fieldY = -105;
     private Vector3 mousePos;
@@ -82,6 +83,7 @@ public class CueScript : MonoBehaviour
             cue.transform.position = cuePosition;
             lineRenderer.GetComponent<LineRenderer>().enabled = false;
             Cursor.visible = true;
+            shootSound.Play();
         }
     }
     void RenderBallLine()

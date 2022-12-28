@@ -7,6 +7,7 @@ public class WhiteBallScript : MonoBehaviour
     [SerializeField] private float mySpeed;
     [SerializeField] private float stopSpeed = 0.1f;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private AudioSource ballSound;
     public bool isMoving;
 
     void Awake()
@@ -39,5 +40,13 @@ public class WhiteBallScript : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezePosition;
         rb.constraints = RigidbodyConstraints.None;
         isMoving = false;
+    }
+    private void OnCollisionEnter(Collision collider) 
+    {
+        if (collider.gameObject.GetComponent<BallScript>())
+        {
+          ballSound.volume = mySpeed;
+          ballSound.Play();
+        }
     }
 }

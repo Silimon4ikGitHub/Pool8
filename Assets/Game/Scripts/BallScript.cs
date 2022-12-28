@@ -5,6 +5,7 @@ using UnityEngine;
 public class BallScript : MonoBehaviour
 {
     [SerializeField] private float stopSpeed = 0.1f;
+    [SerializeField] private AudioSource ballSound;
     private Rigidbody rb;
     private float mySpeed;
     private float fieldY = -105;
@@ -15,6 +16,7 @@ public class BallScript : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        ballSound.gameObject.transform.GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -47,5 +49,13 @@ public class BallScript : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezePosition;
         rb.constraints = RigidbodyConstraints.None;
         isMoving = false;
+    }
+    private void OnCollisionEnter(Collision collider) 
+    {
+        if (collider.gameObject.GetComponent<BallScript>())
+        {
+          ballSound.volume = mySpeed;
+          ballSound.Play();
+        }
     }
 }
