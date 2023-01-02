@@ -6,28 +6,28 @@ public class BallScript : MonoBehaviour
 {
     [SerializeField] private float stopSpeed = 0.1f;
     [SerializeField] private AudioSource ballSound;
-    private Rigidbody rb;
-    private float mySpeed;
-    private float fieldY = -105;
+    private float _mySpeed;
+    private float _fieldY = -105;
+    private Rigidbody _rb;
     public bool isMoving;
     public bool isStriped;
     
     
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         ballSound.gameObject.transform.GetComponent<AudioSource>();
     }
     void Update()
     {
-        if (transform.position.y < fieldY)
+        if (transform.position.y < _fieldY)
         {
             Destroy(transform.gameObject);
         }
 
      CheckMySpeed();
 
-        if (mySpeed < stopSpeed)
+        if (_mySpeed < stopSpeed)
         {
             StopMoution();
         }
@@ -39,22 +39,22 @@ public class BallScript : MonoBehaviour
 
     void CheckMySpeed()
     {
-        mySpeed = rb.velocity.magnitude;
+        _mySpeed = _rb.velocity.magnitude;
     }
     
     void StopMoution()
     {
-        rb.freezeRotation = true;
-        rb.freezeRotation = false;
-        rb.constraints = RigidbodyConstraints.FreezePosition;
-        rb.constraints = RigidbodyConstraints.None;
+        _rb.freezeRotation = true;
+        _rb.freezeRotation = false;
+        _rb.constraints = RigidbodyConstraints.FreezePosition;
+        _rb.constraints = RigidbodyConstraints.None;
         isMoving = false;
     }
     private void OnCollisionEnter(Collision collider) 
     {
         if (collider.gameObject.GetComponent<BallScript>())
         {
-          ballSound.volume = mySpeed;
+          ballSound.volume = _mySpeed;
           ballSound.Play();
         }
     }
